@@ -29,7 +29,7 @@ This plugin requires several changes to be able to work on Android devices. Plea
    ```gradle
        plugins {
            ...
-           id("org.jetbrains.kotlin.android") version "1.8.22" apply false
+           id("org.jetbrains.kotlin.android") version "2.1.20" apply false
        }
    ```
 
@@ -94,11 +94,11 @@ Compatible with apps targeting iOS 13 or above.
 
 To upgrade your iOS deployment target to 13.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
 
-You will also need to update in your Podfile:
+You will also need to update in your `ios/Podfile`:
 
 `platform :ios, '13.0'`
 
-For card scanning add the following to your Info.plist:
+For card scanning add the following to your `ios/Runner/Info.plist`:
 
 ```xml
 <key>NSCameraUsageDescription</key>
