@@ -9,27 +9,22 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuItemsController = Get.put(MenuItemsController());
     return Drawer(
-      child: Column(
-        children: [
-          _buildHeader(),
-          // colapsable menu
-          ListTile(
-            title: Text('Stripe Payment'),
-            onTap: () {
-              menuItemsController.changeIndex(0);
-            },
-            dense: true,
-            leading: Icon(Icons.payment),
-          ),
-          ListTile(
-            title: Text('Test'),
-            onTap: () {
-              menuItemsController.changeIndex(1);
-            },
-            dense: true,
-            leading: Icon(Icons.track_changes),
-          ),
-        ],
+      child: SafeArea(
+        child: Column(
+          children: [
+            _buildHeader(),
+            // menu items
+            for (int i = 0; i < menuItemsController.menuItems.length; i++)
+              ListTile(
+                title: Text(menuItemsController.menuItems[i]['title']),
+                dense: true,
+                leading: Icon(menuItemsController.menuItems[i]['icon']),
+                onTap: () {
+                  menuItemsController.changeIndex(i);
+                },
+              ),
+          ],
+        ),
       ),
     );
     ;
