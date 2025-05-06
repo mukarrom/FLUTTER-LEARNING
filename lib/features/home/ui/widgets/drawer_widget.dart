@@ -27,7 +27,6 @@ class DrawerWidget extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 
   Widget _buildHeader() {

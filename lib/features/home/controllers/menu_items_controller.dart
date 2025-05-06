@@ -23,13 +23,5 @@ class MenuItemsController extends GetxController {
     currentIndex.value = index;
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 }

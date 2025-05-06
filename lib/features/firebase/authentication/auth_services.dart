@@ -15,6 +15,55 @@ class AuthServices {
   // auth change user stream
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
+  // Sign in with Google
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      // create a new provider
+      GoogleAuthProvider googleProvider = GoogleAuthProvider();
+      // set the scopes
+      googleProvider.setCustomParameters({'login_hint': 'TjH6k@example.com'});
+      return await firebaseAuth.signInWithPopup(googleProvider);
+    } catch (e) {
+      logger.d(
+        'Error on sign in with Google: $e',
+        stackTrace: StackTrace.current,
+      );
+      return null;
+    }
+  }
+
+  // Sign in with Facebook
+  Future<UserCredential?> signInWithFacebook() async {
+    try {
+      // create a new provider
+      FacebookAuthProvider facebookProvider = FacebookAuthProvider();
+      // set the scopes
+      facebookProvider.setCustomParameters({'display': 'popup'});
+      return await firebaseAuth.signInWithPopup(facebookProvider);
+    } catch (e) {
+      logger.d(
+        'Error on sign in with Facebook: $e',
+        stackTrace: StackTrace.current,
+      );
+      return null;
+    }
+  }
+
+  // Sign in with Apple
+  Future<UserCredential?> signInWithApple() async {
+    try {
+      // create a new provider
+      OAuthProvider appleProvider = OAuthProvider('apple.com');
+      return await firebaseAuth.signInWithPopup(appleProvider);
+    } catch (e) {
+      logger.d(
+        'Error on sign in with Apple: $e',
+        stackTrace: StackTrace.current,
+      );
+      return null;
+    }
+  }
+
   // sign in with email and password
   Future<UserCredential?> signInWithEmailAndPassword({
     required String email,
